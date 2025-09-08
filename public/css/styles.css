@@ -4,3 +4,22 @@
 *:after {
   box-sizing: border-box;
 }
+
+/*for large view*/
+@media (min-width: 800px){
+  body {
+    margin: 0; /* убираем отступы */
+    padding: 0;
+    height: 100vh;
+    background-image: url("../images/site/checkerboard.jpg"); /* путь к картинке */
+    background-size: cover;   /* растянуть по всей странице */
+    background-position: center; /* центрировать */
+    background-repeat: no-repeat; /* не повторять */
+  }
+
+  .content {
+    color: white;
+    text-align: center;
+    padding: 50px;
+  }
+}
