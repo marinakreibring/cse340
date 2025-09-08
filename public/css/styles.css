@@ -6,20 +6,22 @@
 }
 
 /*for large view*/
-@media (min-width: 800px){
+@media (min-width: 1000px){
   body {
-    margin: 0; /* убираем отступы */
+    margin: 0; 
     padding: 0;
     height: 100vh;
-    background-image: url("../images/site/checkerboard.jpg"); /* путь к картинке */
-    background-size: cover;   /* растянуть по всей странице */
-    background-position: center; /* центрировать */
-    background-repeat: no-repeat; /* не повторять */
+    background-image: url("../images/site/checkerboard.jpg"); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   .content {
-    color: white;
+    background-color: white;
     text-align: center;
     padding: 50px;
+    border-radius: 10px;
+    border: solid 5px lightskyblue;
   }
 }
