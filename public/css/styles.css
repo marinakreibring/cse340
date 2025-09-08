@@ -33,6 +33,7 @@ nav ul{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  text-decoration: none;
 }
 .content h1{
   font-family: 'Times New Roman', Times, serif;
