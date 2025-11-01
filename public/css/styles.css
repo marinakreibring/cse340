@@ -10,34 +10,42 @@ header{
   flex-direction: row;
   justify-content: space-between;
 }
-.siteName{
+.siteName a{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
   line-height: 1.5;
   text-align: left;
   text-decoration: none;
-  color: black;
+  color: darkslategrey;
+  font-weight: bold;
 }
-#tools{
+.siteName a:hover, #tools a:hover{
+  text-decoration: underline;
+}
+#tools a{
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   text-align: end;
   text-decoration: none;
-  color: black;
+  color: darkslategrey;
 }
 nav{
   background-color: darkslategrey;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
+  padding: 2rem 1rem;
 }
 nav ul{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  text-decoration: none;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.5rem;
 }
 .content h1{
   font-family: 'Times New Roman', Times, serif;
-  font-size: 14px;
+  font-size: clamp(1.3rem, 2vw + 0.5rem, 1.8rem);
   font-weight: bold;
 }
 .content li{
@@ -46,8 +54,8 @@ nav ul{
 #spotlight{
   color: lightskyblue;
   position: relative;
-  display: inline-block;
-  max-width: 600px;
+  overflow: hidden;
+  width: 100%;
 }
 #spotlight img {
   width: 100%;
@@ -56,31 +64,36 @@ nav ul{
 }
 #spotlight .info {
   position: absolute;
-  top: 20%;
-  left: 10%;
+  top: 40%;
+  left: 0;
   background-color: rgba(255, 255, 255, 0.8);
-  padding: 15px 20px;
+  padding: 0.5rem 1rem;
   border-radius: 5px;
+  transform: translateY(-50%);
+  max-width: 350px;
 }
-#spotlight h2 {
-  margin: 0 0 10px 0;
+#spotlight .info h2 {
+  margin-bottom: 0.5rem;
+  font-size: clamp(0.9rem, 2vw + 0.5rem, 1.8rem);
 }
-#spotlight ul {
-  margin: 0 0 10px 0;
-  padding-left: 20px;
+#spotlight .info ul {
+  list-style: none;
+  margin: 0 0 1rem 0;
+  padding-left: 0;
+  font-size: clamp(0.8rem, 2vw + 0.5rem, 1.2rem);
 }
-#spotlight button {
+#spotlight .info button {
   background-color: lightskyblue;
   color: black;
   border: none;
-  padding: 8px 16px;
-  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: clamp(0.8rem, 1vw + 0.6rem, 1rem);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
 }
-#spotlight button:hover {
+#spotlight .info button:hover {
   background-color: darkgray;
 }
 #grid{
@@ -88,37 +101,74 @@ nav ul{
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
-#grid section{
+.reviewbox section{
   background-color: lightskyblue;
   text-align: center;
-  padding: 10px;
+  height: 100px;
+  border: 2px solid darkslategray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 #grid img {
   max-width: 100px;
-  height: auto;
+  max-height: 120px;
+  object-fit: contain;
+}
+#grid a{
   display: block;
-  margin: 0 auto 10px auto;
+  text-align: center;
+  margin-top: auto;
 }
 #reviews{
   display: block;
+  text-align: left;
+}
+#reviews ul{
+  list-style-position: inside;
+  padding-left: 0;
+  font-size: clamp(0.8rem, 1vw + 0.6rem, 1rem);
 }
 /*for large view*/
 @media (min-width: 1000px){
-  body {
+  body{
     margin: 0; 
-    padding: 0;
-    height: 100vh;
-    background-image: url("../images/site/checkerboard.jpg"); 
+    padding: 20px 80px;
+    background-image: url("../images/site/small_check.jpg"); 
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
   }
-
-  .content {
+  #wrapper{
     background-color: white;
     text-align: center;
     padding: 50px;
     border-radius: 10px;
     border: solid 5px lightskyblue;
+  }
+  nav{
+    padding: 2rem 3rem;
+  }
+  #features {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 50px;
+  }
+  #upgrades, #reviews{  
+    flex: 1;
+  }
+  #spotlight .info h2, ul {
+    font-size: clamp(1rem, 2vw + 1rem, 2rem);
+  }
+  #spotlight .info ul{
+    font-size: clamp(1rem, 1.5vw + 1rem, 2rem);
+  }
+  #spotlight .info button {
+    font-size: clamp(1rem, 1vw + 1rem, 1.3rem);
+  }
+  #reviews ul{
+    font-size: clamp(1rem, 2vw + 1rem, 1.8rem);
   }
 }
