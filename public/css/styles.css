@@ -101,7 +101,7 @@ nav ul{
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
-.reviewbox section{
+.reviewbox div{
   background-color: lightskyblue;
   text-align: center;
   height: 100px;
