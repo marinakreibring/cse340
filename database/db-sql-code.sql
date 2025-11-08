@@ -239,3 +239,16 @@ VALUES   (
     'White',
     5
   );
+
+-- 4 from ass2 Modify the "GM Hummer" record
+UPDATE inventory
+SET inv_description = replace(inv_description, 'small interiors', 'a huge interior')
+WHERE inv_id = (
+SELECT inv_id FROM inventory WHERE inv_make = 'GM' AND inv_model = 'Hummer' LIMIT 1
+);
+
+-- 6 from ass2 Update all records to add `/vehicles`
+UPDATE inventory
+SET inv_image = replace(inv_image, '/images/', '/images/vehicles/'),
+inv_thumbnail = replace(inv_thumbnail, '/images/', '/images/vehicles/');
+
