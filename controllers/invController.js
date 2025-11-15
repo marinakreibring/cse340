@@ -20,3 +20,33 @@ invCont.buildByClassificationId = async function (req, res, next) {
 }
 
 module.exports = invCont
+
+/* ***************************
+ *  Build item detail view
+ * ************************** */
+async function buildByInvId(req, res, next) {
+  try {
+    const inv_id = parseInt(req.params.inv_id, 10);
+    if (Number.isNaN(inv_id)) {
+      return res.status(400).render("error", { message: "wrong id", status: 400 });
+    }
+
+    const vehicle = await inventoryModel.getVehicleById(inv_id);
+    if (!vehicle) {
+      return res.status(404).render("404", { url: req.originalUrl });
+    }
+    // utilities.buildVehicleDisplay returns HTML to utils
+    const vehicleHTML = utilities.buildVehicleDisplay(vehicle);
+
+    res.render("inventory/detail", {
+      title: `${vehicle.make} ${vehicle.model}`,
+      vehicle,
+      vehicleHTML,
+    });
+  } catch (err) {
+    next(err);
+  }
+}
+module.exports = {
+  buildByInvId,
+};

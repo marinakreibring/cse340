@@ -65,3 +65,51 @@ Util.buildClassificationGrid = async function(data){
   }
   return grid
 }
+
+/* **************************************
+* Build item detail view HTML
+* ************************************ */
+function formatCurrencyUSD(amount) {
+  if (amount == null) return '';
+  return Number(amount).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+}
+function formatNumberWithCommas(value) {
+  if (value == null) return '';
+  return Number(value).toLocaleString('en-US');
+}
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
+function buildVehicleDisplay(vehicle) {
+  const price = formatCurrencyUSD(vehicle.price);
+  const mileage = formatNumberWithCommas(vehicle.miles);
+  const img = escapeHtml(vehicle.image_full || vehicle.image || '/images/no-image.png');
+
+  return `
+    <div class="vehicle-detail">
+      <h1 class="vehicle-title">${escapeHtml(vehicle.make)} ${escapeHtml(vehicle.model)} ${vehicle.year ? '('+escapeHtml(vehicle.year)+')' : ''}</h1>
+      <div class="vehicle-grid">
+        <div class="vehicle-image">
+          <img src="${img}" alt="${escapeHtml(vehicle.make + ' ' + vehicle.model)}">
+        </div>
+        <div class="vehicle-info">
+          <p class="price">${price}</p>
+          <p><strong>Пробег:</strong> ${mileage} miles</p>
+          <p><strong>Кузов:</strong> ${escapeHtml(vehicle.body)}</p>
+          <p><strong>Трансмиссия:</strong> ${escapeHtml(vehicle.transmission)}</p>
+          <p><strong>Цвет:</strong> ${escapeHtml(vehicle.color)}</p>
+          <p class="description">${escapeHtml(vehicle.description)}</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+module.exports = {buildVehicleDisplay, formatCurrencyUSD, formatNumberWithCommas};
