@@ -67,8 +67,9 @@ Util.buildClassificationGrid = async function(data){
 }
 
 /* **************************************
-* Build item detail view HTML
+* Build item detail view HTML - something went wrong, neds testing!!!
 * ************************************ */
+/*
 function formatCurrencyUSD(amount) {
   if (amount == null) return '';
   return Number(amount).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
@@ -113,3 +114,4 @@ function buildVehicleDisplay(vehicle) {
 }
 
 module.exports = {buildVehicleDisplay, formatCurrencyUSD, formatNumberWithCommas};
+*/

@@ -22,19 +22,16 @@ invCont.buildByClassificationId = async function (req, res, next) {
 module.exports = invCont
 
 /* ***************************
- *  Build item detail view
+ *  Build item detail view -something went wrong--needs testing!!!
  * ************************** */
-async function buildByInvId(req, res, next) {
-  try {
+/*
+invCont.buildByInvId = async function (req, res, next) {
+  
     const inv_id = parseInt(req.params.inv_id, 10);
-    if (Number.isNaN(inv_id)) {
-      return res.status(400).render("error", { message: "wrong id", status: 400 });
-    }
+    
+    const vehicle = await invModel.getVehicleById(inv_id);
+    
 
-    const vehicle = await inventoryModel.getVehicleById(inv_id);
-    if (!vehicle) {
-      return res.status(404).render("404", { url: req.originalUrl });
-    }
     // utilities.buildVehicleDisplay returns HTML to utils
     const vehicleHTML = utilities.buildVehicleDisplay(vehicle);
 
@@ -43,10 +40,5 @@ async function buildByInvId(req, res, next) {
       vehicle,
       vehicleHTML,
     });
-  } catch (err) {
-    next(err);
-  }
-}
-module.exports = {
-  buildByInvId,
-};
+  } 
+*/

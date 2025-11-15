@@ -28,8 +28,9 @@ async function getInventoryByClassificationId(classification_id) {
 module.exports = {getClassifications, getInventoryByClassificationId};
 
 /* ***************************
- *  Get items for detail view
+ *  Get items for detail view - not yet!!!
  * ************************** */
+/*
 async function getVehicleById(inv_id) {
   const id = Number(inv_id);
   if (Number.isNaN(id)) return undefined;
@@ -52,3 +53,4 @@ async function getVehicleById(inv_id) {
 }
 
 module.exports = {getVehicleById};
+*/
