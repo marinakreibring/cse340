@@ -31,7 +31,8 @@ Util.getNav = async function (req, res, next) {
  **************************************** */
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
 
-module.exports = Util;
+
+
 
 /* **************************************
 * Build the classification view HTML
@@ -67,51 +68,68 @@ Util.buildClassificationGrid = async function(data){
 }
 
 /* **************************************
-* Build item detail view HTML - something went wrong, neds testing!!!
+* Build item detail view HTML - 
 * ************************************ */
-/*
-function formatCurrencyUSD(amount) {
-  if (amount == null) return '';
-  return Number(amount).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-}
-function formatNumberWithCommas(value) {
-  if (value == null) return '';
-  return Number(value).toLocaleString('en-US');
-}
+//to utilities/index.js 
 function escapeHtml(str) {
-  if (!str) return '';
+  if (str === null || str === undefined) return '';
   return String(str)
     .replace(/&/g, '&amp;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;')
     .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;');
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
-function buildVehicleDisplay(vehicle) {
-  const price = formatCurrencyUSD(vehicle.price);
-  const mileage = formatNumberWithCommas(vehicle.miles);
-  const img = escapeHtml(vehicle.image_full || vehicle.image || '/images/no-image.png');
+function formatCurrencyUSD(value) {
+  if (value === null || value === undefined || isNaN(Number(value))) return 'N/A';
+  return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(Number(value));
+}
+
+function formatNumberWithCommas(value) {
+  if (value === null || value === undefined || isNaN(Number(value))) return 'N/A';
+  return Number(value).toLocaleString('en-US');
+}
+
+/**
+ * buildVehicleDisplay with fields
+ * inv_id, inv_make, inv_model, inv_year, inv_price, inv_miles, inv_image, inv_image_full, inv_thumbnail,*/
+ 
+Util.buildVehicleDisplay = function (vehicle) {
+  if (!vehicle) return '<p class="notice">No vehicle data provided.</p>';
+
+  const price = formatCurrencyUSD(vehicle.inv_price);
+  const mileage = formatNumberWithCommas(vehicle.inv_miles);
+  // try possible options for img
+  const imgSrc = vehicle.inv_image_full || vehicle.inv_image || vehicle.image_full || vehicle.image || '/images/no-image.png';
+  const img = escapeHtml(imgSrc);
+
+  const make = escapeHtml(vehicle.inv_make);
+  const model = escapeHtml(vehicle.inv_model);
+  const year = vehicle.inv_year;
+  const color = escapeHtml(vehicle.inv_color);
+  const description = escapeHtml(vehicle.inv_description);
 
   return `
     <div class="vehicle-detail">
-      <h1 class="vehicle-title">${escapeHtml(vehicle.make)} ${escapeHtml(vehicle.model)} ${vehicle.year ? '('+escapeHtml(vehicle.year)+')' : ''}</h1>
+      <h1 class="vehicle-title">${make} ${model} ${year ? '(' + escapeHtml(year) + ')' : ''}</h1>
       <div class="vehicle-grid">
         <div class="vehicle-image">
-          <img src="${img}" alt="${escapeHtml(vehicle.make + ' ' + vehicle.model)}">
+          <img src="${img}" alt="${make} ${model}">
         </div>
         <div class="vehicle-info">
           <p class="price">${price}</p>
-          <p><strong>Пробег:</strong> ${mileage} miles</p>
-          <p><strong>Кузов:</strong> ${escapeHtml(vehicle.body)}</p>
-          <p><strong>Трансмиссия:</strong> ${escapeHtml(vehicle.transmission)}</p>
-          <p><strong>Цвет:</strong> ${escapeHtml(vehicle.color)}</p>
-          <p class="description">${escapeHtml(vehicle.description)}</p>
+          <p><strong>Mileage:</strong> ${mileage} miles</p>
+          <p><strong>Make:</strong> ${make}</p>
+          <p><strong>Color:</strong> ${color}</p>
+          <p class="description">${description}</p>
         </div>
       </div>
     </div>
   `;
 }
 
-module.exports = {buildVehicleDisplay, formatCurrencyUSD, formatNumberWithCommas};
-*/
+/* **************************************
+ * EXPORT — must be LAST
+ ************************************** */
+module.exports = Util;

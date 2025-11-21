@@ -1,0 +1,20 @@
+<!-- login form -->
+<!-- week 4 activity -->
+<div class="login-box">
+    <h1><%= title %></h1>
+    <form action="/account/login" method="POST" class="login-form">
+        <label for="account_email">Email:</label>
+        <input id="account_email" name="account_email" type="email" required>
+
+        <label for="account_password">Password:</label>
+        <input id="account_password" name="account_password" type="password" required>
+
+        <button type="submit" class="btn-login">LOGIN</button>
+    </form>
+
+    <div class="no-account">
+        <p>No account? <a href="/account/register">Sign-up</a></p>
+    </div>
+</div>
+<script src="/public/js/script.js"></script>
+

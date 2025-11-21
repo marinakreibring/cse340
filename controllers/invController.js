@@ -22,23 +22,40 @@ invCont.buildByClassificationId = async function (req, res, next) {
 module.exports = invCont
 
 /* ***************************
- *  Build item detail view -something went wrong--needs testing!!!
+ *  Build item detail view 
  * ************************** */
-/*
 invCont.buildByInvId = async function (req, res, next) {
-  
-    const inv_id = parseInt(req.params.inv_id, 10);
-    
+  try {
+    const inv_id = req.params.inv_id;
     const vehicle = await invModel.getVehicleById(inv_id);
-    
 
-    // utilities.buildVehicleDisplay returns HTML to utils
+    // if not found
+    if (!vehicle) {
+      return next({
+        status: 404,
+        message: `Vehicle with id ${inv_id} not found`,
+      });
+    }
+
+    // HTML from utilities
     const vehicleHTML = utilities.buildVehicleDisplay(vehicle);
 
+    // navigation
+    const nav = await utilities.getNav();
+
+    // fields
+    const make = vehicle.inv_make;
+    const model = vehicle.inv_model;
+
     res.render("inventory/detail", {
-      title: `${vehicle.make} ${vehicle.model}`,
+      title: `${make} ${model}`,
+      nav,
       vehicle,
       vehicleHTML,
     });
-  } 
-*/
+
+  } catch (error) {
+    console.error("Error in buildByInvId:", error);
+    next(error);
+  }
+};

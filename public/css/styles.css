@@ -189,6 +189,60 @@ nav a:hover{
   object-fit: contain; 
   max-width: 900px; 
 }
+/*for login form*/
+.login-box {
+  margin: 2rem auto;
+  background: darkslategray;
+  color: #fff;
+  padding: 28px 36px;
+  border: 2px solid lightskyblue;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  width: 420px;
+  max-width: 92%;
+}
+.login-box h1 {
+  margin: 0 0 18px;
+  font-size: 1.5rem;
+}
+.login-form label {
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: left;
+}
+.login-form input[type="email"],
+.login-form input[type="password"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 6px;
+  border-radius: 6px;
+  border: none;
+  box-sizing: border-box;
+}
+.btn-login {
+  display: block;
+  margin: 18px auto 8px;
+  padding: 8px 28px;
+  border-radius: 20px;
+  border: none;
+  background: #ffffff;
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+}
+.no-account {
+  text-align: center;
+  margin-top: 12px;
+  color: #f7f7f7;
+}
+.no-account a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
 @media (min-width: 900px) {
   .vehicle-grid { flex-direction: row; align-items: flex-start; }
   .vehicle-image { flex: 1; }
@@ -196,6 +250,7 @@ nav a:hover{
   .vehicle-title { font-size: 1.8rem; }
   .price { font-size: 1.6rem; color: #003366; }
 }
+
 /*for large view*/
 @media (min-width: 1000px){
   body{

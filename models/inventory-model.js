@@ -25,32 +25,32 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId};
-
 /* ***************************
- *  Get items for detail view - not yet!!!
- * ************************** */
-/*
+ *  Get single vehicle by ID
+ *************************** */
 async function getVehicleById(inv_id) {
-  const id = Number(inv_id);
-  if (Number.isNaN(id)) return undefined;
-
-  const sql = `
-    SELECT inv_id, make, model, year, price, miles, body, transmission, color, description,
-           image_full, image_thumbnail
-    FROM inventory
-    WHERE inv_id = $1
-    LIMIT 1
-  `;
+  const id = Number(inv_id)
+  if (Number.isNaN(id)) return undefined
 
   try {
-    const { rows } = await pool.query(sql, [id]);
-    return rows[0]; // undefined если нет
+    const data = await pool.query(
+      `SELECT i.*, c.classification_name
+       FROM public.inventory AS i
+       JOIN public.classification AS c
+       ON i.classification_id = c.classification_id
+       WHERE i.inv_id = $1`,
+      [id]
+    )
+
+    return data.rows[0] || null
   } catch (error) {
-    console.error("error in getVehicleById:", error);
-    throw error;
+    console.error("getVehicleById error:", error)
+    throw error
   }
 }
 
-module.exports = {getVehicleById};
-*/
+module.exports = {
+  getClassifications,
+  getInventoryByClassificationId,
+  getVehicleById
+}
