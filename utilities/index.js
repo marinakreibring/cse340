@@ -91,34 +91,35 @@ function formatNumberWithCommas(value) {
   return Number(value).toLocaleString('en-US');
 }
 
-/**
+/* **********************************
  * buildVehicleDisplay with fields
- * inv_id, inv_make, inv_model, inv_year, inv_price, inv_miles, inv_image, inv_image_full, inv_thumbnail,*/
- 
+ * inv_id, inv_make, inv_model, inv_year, 
+ ********************************** */
 Util.buildVehicleDisplay = function (vehicle) {
   if (!vehicle) return '<p class="notice">No vehicle data provided.</p>';
 
   const price = formatCurrencyUSD(vehicle.inv_price);
   const mileage = formatNumberWithCommas(vehicle.inv_miles);
   // try possible options for img
-  const imgSrc = vehicle.inv_image_full || vehicle.inv_image || vehicle.image_full || vehicle.image || '/images/no-image.png';
+  const imgSrc = vehicle.inv_image_full || vehicle.inv_image || '/images/no-image.png';
   const img = escapeHtml(imgSrc);
-
   const make = escapeHtml(vehicle.inv_make);
   const model = escapeHtml(vehicle.inv_model);
   const year = vehicle.inv_year;
   const color = escapeHtml(vehicle.inv_color);
   const description = escapeHtml(vehicle.inv_description);
+  const identnummer = escapeHtml(vehicle.classification_id);
 
   return `
     <div class="vehicle-detail">
-      <h1 class="vehicle-title">${make} ${model} ${year ? '(' + escapeHtml(year) + ')' : ''}</h1>
+      <h2>Product article number: ${identnummer}</h2>
       <div class="vehicle-grid">
         <div class="vehicle-image">
           <img src="${img}" alt="${make} ${model}">
         </div>
         <div class="vehicle-info">
           <p class="price">${price}</p>
+          <p><strong>Production Year:</strong> ${year}</p>
           <p><strong>Mileage:</strong> ${mileage} miles</p>
           <p><strong>Make:</strong> ${make}</p>
           <p><strong>Color:</strong> ${color}</p>
