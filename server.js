@@ -16,6 +16,8 @@ const utilities = require("./utilities/")
 const session = require("express-session")
 const pool = require ('./database')
 const accountRoute = require("./routes/accountRoute")
+const bodyParser = require("body-parser")
+
 
 // for intentional error
 const intentionalErrorRoute = require("./routes/intentionalError");
@@ -41,7 +43,9 @@ app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res)
   next()
 })
-
+// Process registration
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 /* ***********************
  * View Engine and Templates

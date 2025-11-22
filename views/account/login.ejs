@@ -1,7 +1,23 @@
 <!-- login form -->
 <!-- week 4 activity -->
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
+
+        <%- messages() %>
+
+            <% if (errors) { %>
+                <ul class="notice">
+                    <% errors.array().forEach(error=> { %>
+                        <li>
+                            <%= error.msg %>
+                        </li>
+                        <% }) %>
+                </ul>
+                <% } %>
 <div class="login-box">
-    <h1><%= title %></h1>
     <form action="/account/login" method="POST" class="login-form">
         <label for="account_email">Email:</label>
         <input id="account_email" name="account_email" type="email" required>

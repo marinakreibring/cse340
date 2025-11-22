@@ -189,31 +189,39 @@ nav a:hover{
   object-fit: contain; 
   max-width: 900px; 
 }
-/*for login form*/
-.login-box {
+/*for login and register forms*/
+.login-box{
   margin: 2rem auto;
-  background: darkslategray;
+  background-color: darkslategray;
   color: #fff;
-  padding: 28px 36px;
-  border: 2px solid lightskyblue;
+  padding: 25px 35px;
   border-radius: 10px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.4);
   width: 420px;
   max-width: 92%;
 }
-.login-box h1 {
+.register-box{
+  margin: 2rem auto;
+  background-color: lightskyblue;
+  color: darkslategray;
+  padding: 25px 35px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  width: 420px;
+  max-width: 92%;
+}
+.login-box h1, .register-box h1{
   margin: 0 0 18px;
   font-size: 1.5rem;
 }
-.login-form label {
+.login-form label{
   display: block;
   margin-top: 12px;
   font-weight: bold;
   font-size: 14px;
   text-align: left;
 }
-.login-form input[type="email"],
-.login-form input[type="password"] {
+.login-form input{
   width: 100%;
   padding: 10px 12px;
   margin-top: 6px;
@@ -221,26 +229,45 @@ nav a:hover{
   border: none;
   box-sizing: border-box;
 }
-.btn-login {
+.btn-login{
   display: block;
-  margin: 18px auto 8px;
-  padding: 8px 28px;
+  margin: 10px auto;
+  padding: 10px 20px;
   border-radius: 20px;
   border: none;
-  background: #ffffff;
-  color: #333;
+  background-color: #ffffff;
+  color: darkslategray;
   font-weight: 600;
   cursor: pointer;
 }
-.no-account {
+.no-account{
   text-align: center;
   margin-top: 12px;
   color: #f7f7f7;
 }
-.no-account a {
+.no-account a{
   color: #fff;
   text-decoration: underline;
   font-weight: bold;
+}
+.footnote{
+  font-style: italic;
+  font-size: medium;
+  padding: 5px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+#pswdBtn{
+  border: 2px solid lightskyblue;
+  background-color: darkslategray;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 2rem;
+  font-size: small;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 2rem;
 }
 /*for detail page*/
 .vehicle-detail h2{
@@ -249,6 +276,10 @@ nav a:hover{
 .description{
   font-style: italic;
   font-size: 1rem;
+}
+#inventoryDisplay{
+  width: 100%;
+  margin-top: 2rem;
 }
 
 @media (min-width: 900px) {
