@@ -269,6 +269,16 @@ nav a:hover{
   cursor: pointer;
   margin-bottom: 2rem;
 }
+input:required:invalid, input:focus:invalid {
+ background-image: url(/images/invalid.png);
+ background-position: right top;
+ background-repeat: no-repeat;
+}
+ input:required:valid {
+ background-image: url(/images/valid.png);
+ background-position: right top;
+ background-repeat: no-repeat;
+ }
 /*for detail page*/
 .vehicle-detail h2{
   color: darkslategray;
