@@ -2,38 +2,31 @@
 <div id="flash-messages">
     <%- messages() %>
 </div>
+<div class="management-container">
+    <h2>Inventory Management</h2>
+    <div class="management-links">
+        <div class="link-card">
+            <a href="/inv/add-classification" class="management-link">
+                <h3>Add New Classification</h3>
+            </a>
+            <p>Create a new vehicle classification category</p>
+        </div>
+        <div class="link-card">
+            <a href="/inv/add-inventory" class="management-link">
+                <h3>Add New Vehicle</h3>
+            </a>   
+            <p>Add a new vehicle to the inventory</p>
+        </div>        
+    </div>
 
-            <div class="management-container">
-                <h1>Vehicle Management</h1>
+    <hr style="margin: 2rem 0; border: 2px solid darkslategray;">
 
-                <div class="management-links">
-                    <a href="/inv/add-classification" class="management-link">
-                        <div class="link-card">
-                            <h2>Add New Classification</h2>
-                            <p>Create a new vehicle classification category</p>
-                        </div>
-                    </a>
-
-                    <a href="/inv/add-inventory" class="management-link">
-                        <div class="link-card">
-                            <h2>Add New Vehicle</h2>
-                            <p>Add a new vehicle to the inventory</p>
-                        </div>
-                    </a>
-                </div>
-
-                <hr style="margin: 2rem 0; border: 2px solid darkslategray;">
-
-                <h2>Manage Inventory</h2>
-                <p>
-                    Choose a classification from the list to see the inventory items belonging to the classification.
-                </p>
-
-                <div class="classification">
-                    <%- classificationSelect %>
-                </div>
-                <table id="inventoryDisplay"></table>
-
-            </div>
-
-            <script src="/js/inventory.js"></script>
+    <h2>Manage Inventory</h2>
+    <p>Choose a classification from the list to see the inventory items belonging to the classification.</p>
+        <div class="classification">
+                <%- classificationSelect %>
+        </div>
+    <table id="inventoryDisplay"></table>
+    <noscript>JavaScript must be enabled to use this page.</noscript>
+</div>
+<script src="/js/inventory.js"></script>

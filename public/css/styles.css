@@ -291,6 +291,25 @@ input:required:invalid, input:focus:invalid {
   width: 100%;
   margin-top: 2rem;
 }
+/*for manager view*/
+.management-container{
+  margin: 2rem auto;
+  background-color: lightskyblue;
+  color: darkslategray;
+  padding: 25px 35px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  width: 420px;
+  max-width: 92%;
+}
+.management-link{
+ text-decoration: none;
+ color: darkslategray;
+}
+.management-link:hover{
+ text-decoration: underline;
+ color: black;
+}
 
 @media (min-width: 900px) {
   .vehicle-grid { flex-direction: row; align-items: flex-start; }
