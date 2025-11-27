@@ -1,25 +1,22 @@
-<% if (title) { %>
-    <h1>
-        <%= title %>
-    </h1>
-    <% } else { res.redirect('/') } %>
-
-        <%- messages() %>
+<!-- flash messages (express-messages / connect-flash) -->
+<div id="flash-messages">
+    <%- messages() %>
+</div>
 
             <div class="management-container">
-                <h2>Inventory Management</h2>
+                <h1>Vehicle Management</h1>
 
                 <div class="management-links">
                     <a href="/inv/add-classification" class="management-link">
                         <div class="link-card">
-                            <h3>Add New Classification</h3>
+                            <h2>Add New Classification</h2>
                             <p>Create a new vehicle classification category</p>
                         </div>
                     </a>
 
                     <a href="/inv/add-inventory" class="management-link">
                         <div class="link-card">
-                            <h3>Add New Vehicle</h3>
+                            <h2>Add New Vehicle</h2>
                             <p>Add a new vehicle to the inventory</p>
                         </div>
                     </a>
@@ -37,7 +34,6 @@
                 </div>
                 <table id="inventoryDisplay"></table>
 
-                <noscript>JavaScript must be enabled to use this page.</noscript>
             </div>
 
             <script src="/js/inventory.js"></script>

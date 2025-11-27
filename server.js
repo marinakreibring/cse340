@@ -17,6 +17,7 @@ const session = require("express-session")
 const pool = require ('./database')
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 
 
 // for intentional error
@@ -75,6 +76,12 @@ app.use("/account", accountRoute);
 
 // Intentional error route
 app.use("/", intentionalErrorRoute);
+
+//week5 - coockie-parser
+app.use(cookieParser())
+
+//week 5 - token
+app.use(utilities.checkJWTToken)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
