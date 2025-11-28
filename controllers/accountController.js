@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+
 /* ****************************************
 *  Deliver login view
 * *************************************** */
@@ -123,7 +124,7 @@ async function accountLogin(req, res) {
 async function buildAccountManagement(req, res, next) {
   let nav = await utilities.getNav()
   const classificationSelect = await utilities.buildClassificationList()
-  res.render("account/accountManagement", {
+  res.render("account/management", {
     title: "Account Management",
     nav,
     classificationSelect,
