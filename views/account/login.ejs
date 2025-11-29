@@ -1,14 +1,13 @@
 <!-- login form -->
 <!-- week 4 activity -->
-<%- (typeof messages === 'function') ? messages() : '' %>
+<% if (title) { %>
+    <h1>
+        <%= title %>
+    </h1>
+    <% } else { res.redirect('/') } %>
 
-<% if (typeof errors !== 'undefined' && errors && typeof errors.array === 'function') { %>
-  <ul class="notice">
-    <% errors.array().forEach(error => { %>
-      <li><%= error.msg %></li>
-    <% }) %>
-  </ul>
-<% } %>
+        <%- messages() %>
+        
 <div class="login-box">
     <form action="/account/login" method="POST" class="login-form">
         <label for="account_email">Email:</label>

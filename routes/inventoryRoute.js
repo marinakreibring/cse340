@@ -6,16 +6,20 @@ const utilities = require("../utilities")
 const invValidate = require("../utilities/inventory-validation")
 
 // Route to build inventory by classification view
-router.get("/type/:classificationId", invController.buildByClassificationId);
+router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
 //Route to build item detail view 
-router.get("/detail/:inv_id", invController.buildByInvId);
+router.get("/detail/:inv_id", utilities.handleErrors(invController.buildByInvId));
 
-// Route to build management view
-router.get("/", utilities.handleErrors(invController.buildManagementView));
+// Route to build management view (for Employee and Admin)
+router.get("/", 
+  utilities.checkLogin,
+  utilities.checkAccountType,
+  utilities.handleErrors(invController.buildManagementView));
 
 // Route to show add classification form
 router.get("/add-classification", 
   utilities.checkLogin, 
+  utilities.checkAccountType,
   utilities.handleErrors(invController.buildAddClassification)
 );
 
@@ -23,6 +27,7 @@ router.get("/add-classification",
 router.post(
   "/add-classification",
   utilities.checkLogin,
+  utilities.checkAccountType,
   invValidate.classificationRules(),
   invValidate.checkClassificationData,
   utilities.handleErrors(invController.addClassification)
@@ -31,6 +36,7 @@ router.post(
 // Route to show add inventory form
 router.get("/add-inventory", 
   utilities.checkLogin, 
+  utilities.checkAccountType,
   utilities.handleErrors(invController.buildAddInventory)
 );
 
@@ -38,6 +44,7 @@ router.get("/add-inventory",
 router.post(
   "/add-inventory",
   utilities.checkLogin,
+  utilities.checkAccountType,
   invValidate.inventoryRules(),
   invValidate.checkInventoryData,
   utilities.handleErrors(invController.addInventory)
@@ -46,6 +53,7 @@ router.post(
 // Route to show edit inventory form
 router.get("/edit/:inv_id", 
   utilities.checkLogin,
+  utilities.checkAccountType,
   utilities.handleErrors(invController.buildEditInventory)
 );
 
@@ -53,6 +61,7 @@ router.get("/edit/:inv_id",
 router.post(
   "/update",
   utilities.checkLogin,
+  utilities.checkAccountType,
   invValidate.inventoryRules(),
   invValidate.checkUpdateData,
   utilities.handleErrors(invController.updateInventory)
@@ -61,5 +70,19 @@ router.post(
 // Route to work with js file
 router.get("/getInventory/:classification_id", 
     utilities.handleErrors(invController.getInventoryJSON))
+
+// Route to show delete confirmation view
+router.get("/delete/:inv_id", 
+  utilities.checkLogin, 
+  utilities.checkAccountType, 
+  utilities.handleErrors(invController.buildDeleteConfirmation)
+);
+
+// Route to process delete
+router.post("/delete", 
+  utilities.checkLogin, 
+  utilities.checkAccountType, 
+  utilities.handleErrors(invController.deleteInventory)
+);
 
 module.exports = router;

@@ -221,11 +221,11 @@ nav a:hover{
   font-size: 14px;
   text-align: left;
 }
-.login-form input{
+.login-form input, .login-form textarea, #classificationList{
   width: 100%;
   padding: 10px 12px;
-  margin-top: 6px;
-  border-radius: 6px;
+  margin-top: 5px;
+  border-radius: 5px;
   border: none;
   box-sizing: border-box;
 }
@@ -336,6 +336,7 @@ input:required:invalid, input:focus:invalid {
     background-color: white;
     text-align: center;
     padding: 50px;
+    margin: 50px;
     border-radius: 10px;
     border: solid 5px lightskyblue;
   }

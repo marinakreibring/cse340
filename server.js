@@ -48,6 +48,13 @@ app.use(function(req, res, next){
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
+
+// Cookie Parser Middleware
+app.use(cookieParser())
+
+// JWT Check Middleware
+app.use(utilities.checkJWTToken)
+
 /* ***********************
  * View Engine and Templates
  *************************/
@@ -63,9 +70,6 @@ app.use(static)
 /* ***********************
  * Index Route
  *************************/
-/*app.get ("/", function(req, res){
-  res.render("index", {title: "Home"})
-})*/
 app.get("/", utilities.handleErrors(baseController.buildHome));
 
 // Inventory routes
@@ -76,12 +80,6 @@ app.use("/account", accountRoute);
 
 // Intentional error route
 app.use("/", intentionalErrorRoute);
-
-//week5 - coockie-parser
-app.use(cookieParser())
-
-//week 5 - token
-app.use(utilities.checkJWTToken)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
