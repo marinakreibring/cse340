@@ -32,6 +32,8 @@ router.get("/", utilities.handleErrors(utilities.checkLogin), utilities.handleEr
 // Logout route - week 5 assignment
 router.get("/logout", utilities.handleErrors(accountController.accountLogout));
 
+
+
 // Route to show account update view - week 5 assignment
 router.get("/update/:account_id", 
   utilities.checkLogin, 

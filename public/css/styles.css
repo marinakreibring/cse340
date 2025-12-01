@@ -269,6 +269,9 @@ nav a:hover{
   cursor: pointer;
   margin-bottom: 2rem;
 }
+#changepass{
+  margin: 1rem;
+}
 input:required:invalid, input:focus:invalid {
  background-image: url(/images/invalid.png);
  background-position: right top;

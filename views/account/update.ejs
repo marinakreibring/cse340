@@ -21,21 +21,21 @@
                         <!-- Account Information Update Form -->
                         <div class="update-section">
                             <h2>Update Account Information</h2>
-                            <form id="updateAccountForm" action="/account/update" method="post">
+                            <form id="updateAccountForm" class="login-box" action="/account/update" method="post">
 
-                                <div class="form-group">
+                                <div class="login-form">
                                     <label for="account_firstname">First Name:</label>
                                     <input type="text" id="account_firstname" name="account_firstname"
                                         value="<%= locals.account_firstname %>" required>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="login-form">
                                     <label for="account_lastname">Last Name:</label>
                                     <input type="text" id="account_lastname" name="account_lastname"
                                         value="<%= locals.account_lastname %>" required>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="login-form">
                                     <label for="account_email">Email Address:</label>
                                     <input type="email" id="account_email" name="account_email"
                                         value="<%= locals.account_email %>" required>
@@ -48,19 +48,21 @@
                         <!-- Password Change Form -->
                         <div class="update-section">
                             <h2>Change Password</h2>
-                            <p class="password-note">
-                                Enter a new password to change your current password.
-                                <strong>Password Requirements:</strong> Must be at least 12 characters
+                            <p class="footnote">Enter a new password to change your current password.</p>
+                            <h3>Password Requirements:</h3> 
+                            <p style="text-align: center;">must be at least 12 characters
                                 and contain at least 1 capital letter, 1 number, and 1 special character.
                             </p>
 
-                            <form id="changePasswordForm" action="/account/change-password" method="post">
+                            <form id="changePasswordForm" class="register-box" action="/account/change-password" method="post">
 
-                                <div class="form-group">
+                                <div class="login-form">
                                     <label for="account_password">New Password:</label>
                                     <input type="password" id="account_password" name="account_password" required
                                         pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
-                                    <span id="pswdBtn">Show password</span>
+                                        <div id="changepass">
+                                            <span id="pswdBtn">Show password</span>
+                                        </div>
                                 </div>
 
                                 <!-- Hidden account_id -->

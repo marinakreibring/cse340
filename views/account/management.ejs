@@ -11,8 +11,17 @@
 
                 <p>You're logged in!</p>
 
-                <a href="/account/update/<%= locals.accountData.account_id %>" class="btn-link">
+                <a href="/account/update/<%= locals.accountData.account_id %>">
                     Update Account Information
                 </a>
+
+                <% if (locals.accountData.account_type==='Employee' || locals.accountData.account_type==='Admin' ) { %>
+                    <h3>Inventory Management</h3>
+                    <p>
+                        <a href="/inv/" style="display: inline-block;">
+                            Manage Inventory
+                        </a>
+                    </p>
+                    <% } %>
                 
             </div>

@@ -10,6 +10,7 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 //Route to build item detail view 
 router.get("/detail/:inv_id", utilities.handleErrors(invController.buildByInvId));
 
+
 // Route to build management view (for Employee and Admin)
 router.get("/", 
   utilities.checkLogin,
@@ -50,11 +51,15 @@ router.post(
   utilities.handleErrors(invController.addInventory)
 );
 
-// Route to show edit inventory form
+// Route to work with js file
+router.get("/getInventory/:classification_id", 
+    utilities.handleErrors(invController.getInventoryJSON))
+
+    // Route to show edit inventory form
 router.get("/edit/:inv_id", 
   utilities.checkLogin,
   utilities.checkAccountType,
-  utilities.handleErrors(invController.buildEditInventory)
+  utilities.handleErrors(invController.editInventoryView)
 );
 
 // Route to process inventory update
@@ -67,9 +72,6 @@ router.post(
   utilities.handleErrors(invController.updateInventory)
 );
 
-// Route to work with js file
-router.get("/getInventory/:classification_id", 
-    utilities.handleErrors(invController.getInventoryJSON))
 
 // Route to show delete confirmation view
 router.get("/delete/:inv_id", 
